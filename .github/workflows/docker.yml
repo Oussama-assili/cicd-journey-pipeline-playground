@@ -35,6 +35,9 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Set lowercase image name
+        run: echo "IMAGE=ghcr.io/${GITHUB_REPOSITORY,,}:latest" >> $GITHUB_ENV
+
       # Build the image and push it. The tag names WHERE it goes:
       #   ghcr.io/<owner>/<repo>:latest
       # We lowercase the repo owner because GHCR requires lowercase names
@@ -44,4 +47,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository }}:latest
+          tags: ${{ env.IMAGE }}

@@ -50,4 +50,4 @@ jobs:
           tags: ${{ env.IMAGE }}
       
       - name: Trigger Render deploy
-         run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
+        run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
